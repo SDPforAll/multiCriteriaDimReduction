@@ -39,6 +39,7 @@ Fairness criteria can be specified for both SDP_based algorithms and multiplcait
 
 #### Objective for each group
 Objective for each group of a given PCA solution P:
+
 | Objective | Description |
 | --- | --- |
 | 'Var' | the variance of P on that group |
@@ -48,7 +49,8 @@ Objective for each group of a given PCA solution P:
 These objectives for any solution P computed from our algorithms are recorded in the .csv files in data folder, followed by the group index starting from 0, e.g. Var0 (variance of group 0) or Loss5 (loss of group 5).
 
 #### Objectives across all groups (i.e. fairness criteria)
-MM_Loss, MM_Var, NSW are three fairness criteria, corresponding to the following objectives
+MM_Loss, MM_Var, NSW are three fairness criteria, corresponding to the following objectives:
+
 | Fairness Criteria | Description |
 | --- | --- |
 | MM_Loss | maximizing minimum mariginal loss across groups (if the number is positive), or minimizing the maximum marginal different of variance across groups (if the number is negative), i.e. trying to maximize min_{all groups i} Loss_i |
