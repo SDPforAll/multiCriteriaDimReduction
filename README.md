@@ -1,5 +1,4 @@
 # multiCriteriaDimReduction
-Multi-Criteria Dimensionality Reduction
 
 This repo contains the codes of the paper Multi-Criteria Dimensionality Reduction with Applications to Fairness.
 
@@ -12,7 +11,26 @@ The .py files contain helper methods for:
 
 Each of the Jupyter notebooks shows how to apply one of the PCA strategy (fair SDP-based PCA vs standard PCA) to each of the dataset (Credit and Income data). The MW notebook implements MW (multiplicative weight update) instead of using SDP solver for the fair SDP-based PCA.
 
-To use, we recommend opening one of the Jupyter notebooks and running through it, e.g. SDP_credit.ipynb. You can check the format of the data and see an example usage, and apply to your own datasets. For more details of the usage, each method (MW, fair SDP-based PCA, std_PCA, etc.) has documentation of usage in corresponding .py files, including what to expect as an input and output. The *Notations* subsection also gives a quick explanation of variable names and keywords.
+To use, we recommend opening one of the Jupyter notebooks and running through it. We recommend opening either:
+- SDP_credit.ipynb
+- heuristics.ipynb in 'additional-heuristics' folder
+
+You can check the format of the data and see an example usage, and apply to your own datasets. For more details of the usage, each method (MW, fair SDP-based PCA, std_PCA, etc.) has documentation of usage in corresponding .py files, including what to expect as an input and output. The *Notations* subsection also gives a quick explanation of variable names and keywords.
+
+### Papers
+
+The original paper at NeurIPS can be found at https://papers.nips.cc/paper/9652-multi-criteria-dimensionality-reduction-with-applications-to-fairness. The arXiv version is at https://arxiv.org/abs/1902.11281v2. 
+
+Additional heuristics are included later in a subsection in my thesis: https://www.uthaipon.com/files/U-Tantipongpipat-phd-thesis-final.pdf
+
+### Contact 
+If you have any question, feel free to reach me at [my username] [at] gmail dot com.
+
+## Variants of Algorithms
+
+In the 'additional-heuristics' folder, we develop MW and FW alternatives to solving SDP which is much faster in practice and apply it to a large Census data of original dimensions n=1000,2000. The runtime of these are in order of a minute for data of up to 1000 original dimensions, and about 10 minutes for up to 2000 dimensions. We recommend using these alternatives for n>=50.
+
+We note that MW is also used for income data ('MW_credit_income_example') as an example. The MW implemented is the same as in the 'additional-heuristics' folder, but simpler as it was developed for a small dataset. However, for full functionality and tutorial of using MW and FW, we still recommend exploring 'additional-heuristics'.
 
 ## Notations
 This subsection explains variables and keywords used in the code.
@@ -57,3 +75,6 @@ MM_Loss, MM_Var, NSW are three fairness criteria, corresponding to the following
 | MM_Var | maximizing minimum variance across all groups, i.e. maximizing min_{all groups i} Var_i |
 | NSW | maximizing Nash social welfare of variances, which is the geometric mean of the variance across groups, i.e. maximizing (product_{all groups i} Var_i)^(1/d) |
   
+## Note
+
+This work expends the prior work "The Price of Fair PCA: One Extra Dimension" at https://github.com/uthaipon/Fair-PCA. The algorithms in this repo are applicable to more general settings. This repo is in Python (Jypyter notebook) and the previous version (Fair PCA) was implemented in MATLAB.
